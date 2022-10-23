@@ -1,41 +1,36 @@
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React, { Component } from "react";
 
+import * as ACTION_TYPE from '../../src/store/actions/actions_type';
+import * as ACTION from '../../src/store/actions/actions';
+
+import {connect} from 'react-redux';
+import { FAILURE, SUCCESS } from "../../src/store/actions/actions_type";
+
+
 class Container1 extends Component {
-    // LEGACYCODE FORM
-    // constructor(props){
-    //     super(props)
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    // } 
-    // RENDERE LE FUNZIONI SUCCESSIVE NORMALI E NON ARROW FUNCTION
-
-    state = {
-        value: ''
-    }
-
-    handleChange = (event) => {
-        // console.log(event.target.value);
-        this.setState( {value : event.target.value});
-        // console.log(this.state.value);
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log( this.state.value)
-    }
+    
 
     render() {
         return (
             <div>
-                {this.state.value}
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name</label>
-                    <input id="name" onChange={this.handleChange} type="text" />
-                    <button>Submit</button>
-                </form>
+               <button onClick={() => console.log(this.props.stateprop1)}>Get state</button>
+               <button onClick={() => this.props.action1()}>Dsipacth action 1</button>
+               <button onClick={() => this.props.action2()}>Dsipacth action 2</button>
             </div>
         )}
 }
 
-export default Container1;
+function mapStateToProps(state) {
+    return {
+        stateprop1 : state.stateprop1
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        action1: ()=> dispatch(ACTION.SUCCESS),
+        action2: ()=> dispatch(ACTION.FAILURE)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Container1);

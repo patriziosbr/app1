@@ -5,7 +5,7 @@ const initialState = {
     stateprop1: false
 }
 
-const rootReducer = (state = initialState, action) => {
+const Reducer1 = (state = initialState, action) => {
     switch(action.type) {
         case ACTION_TYPE.SUCCESS:
         return {
@@ -18,10 +18,8 @@ const rootReducer = (state = initialState, action) => {
             stateprop1: false
         }
         default:
-        return{
-            state
-        }
+        return state
     }
 }
 
-export default rootReducer
+export default Reducer1
