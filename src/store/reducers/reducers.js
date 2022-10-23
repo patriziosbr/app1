@@ -1,4 +1,3 @@
-
 import * as ACTION_TYPE from '../actions/actions_type'
 
 const initialState = {
@@ -17,6 +16,7 @@ const Reducer1 = (state = initialState, action) => {
             ...state,
             stateprop1: false
         }
+   
         default:
         return state
     }
