@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import { FAILURE, SUCCESS } from "../../src/store/actions/actions_type";
 
 
+
+
 class Container1 extends Component {
 
     render() {
@@ -23,7 +25,6 @@ class Container1 extends Component {
                 ? <h1>{this.props.user_input}</h1> 
                 : null}
             </div>
-            
         )}
 }
 
